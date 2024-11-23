@@ -87,11 +87,11 @@ export const api = createApi({
           ? result.map(({ id }) => ({ type: "Tasks" as const, id }))
           : [{ type: "Tasks" as const }],
     }),
-    createTasks: build.mutation<Task, Partial<Project>>({
-      query: (tasks) => ({
+    createTask: build.mutation<Task, Partial<Task>>({
+      query: (task) => ({
         url: "tasks",
         method: "POST",
-        body: tasks,
+        body: task,
       }),
       invalidatesTags: ["Tasks"],
     }),
@@ -112,6 +112,6 @@ export const {
   useGetProjectsQuery,
   useCreateProjectMutation,
   useGetTasksQuery,
-  useCreateTasksMutation,
+  useCreateTaskMutation,
   useUpdateTaskStatusMutation,
 } = api;
